@@ -23,11 +23,6 @@ const InputComponent = (): JSX.Element => {
     setSmoothLocatoionArray(_smoothValue);
   };
 
-  const props: object = {
-    smoothLocationArray,
-    rawLocationArray,
-  };
-
   return (
     <Fragment>
       <div className="input-bar">
