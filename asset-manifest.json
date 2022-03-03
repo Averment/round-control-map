@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/round-control-map/static/css/main.28241ee4.css",
+    "main.js": "/round-control-map/static/js/main.642367dc.js",
+    "static/js/787.88f4ca7b.chunk.js": "/round-control-map/static/js/787.88f4ca7b.chunk.js",
+    "index.html": "/round-control-map/index.html",
+    "main.28241ee4.css.map": "/round-control-map/static/css/main.28241ee4.css.map",
+    "main.642367dc.js.map": "/round-control-map/static/js/main.642367dc.js.map",
+    "787.88f4ca7b.chunk.js.map": "/round-control-map/static/js/787.88f4ca7b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28241ee4.css",
+    "static/js/main.642367dc.js"
+  ]
+}
