@@ -53,3 +53,10 @@
   height: 10px;
   background-color: #ffff00;
 }
+
+.differences {
+  float: right;
+  margin-top: 50px;
+  margin-right: 60px;
+  color: white;
+}
