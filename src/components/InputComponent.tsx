@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import MapComponent from "./MapComponent";
 import { UnFormattedLocationData } from "../models/models";
 
@@ -9,12 +9,14 @@ const InputComponent = (): JSX.Element => {
   const [smoothLocationArray, setSmoothLocatoionArray] = useState<
     Array<UnFormattedLocationData>
   >([]);
+  const [displayDifferences, setDisplayDifferences] = useState<boolean>(false);
   const JSON5 = require("json5");
 
   const handleRawDataChange = (e: any): void => {
     e.preventDefault();
     const _rawValue = JSON5.parse(e.target[0].value);
     setRawLocatoionArray(_rawValue);
+    setDisplayDifferences(true);
   };
 
   const handleSmoothDataChange = (e: any): void => {
@@ -22,6 +24,12 @@ const InputComponent = (): JSX.Element => {
     const _smoothValue = JSON5.parse(e.target[0].value);
     setSmoothLocatoionArray(_smoothValue);
   };
+
+  const getDifferences = (): number => {
+    const rawLength = rawLocationArray.length;
+    const smoothLength = smoothLocationArray.length;
+    return rawLength - smoothLength;
+  }
 
   return (
     <Fragment>
@@ -42,6 +50,11 @@ const InputComponent = (): JSX.Element => {
             <input type="submit" value="submit" />
           </form>
         </div>
+        {displayDifferences && <div className='differences'>
+          <h3>{`Raw Locations: ${rawLocationArray.length}`}</h3>
+          <h3>{`Smooth Locations: ${smoothLocationArray.length}`}</h3>
+        <h2>{`Difference in locations: ${getDifferences()}`}</h2>
+        </div>}
       </div>
       <MapComponent
         rawLocationArray={rawLocationArray}

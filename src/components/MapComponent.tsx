@@ -12,12 +12,12 @@ const MapComponent = ({
   smoothLocationArray,
 }: MapComponentProps): JSX.Element => {
   const [zoomLevel, setZoomLevel] = useState<number>(6);
-
+  
   let defaultCenter: google.maps.LatLngLiteral = {
     lat: 53.489758,
     lng: -2.337708,
   };
-
+  
   let smoothOptions: google.maps.PolylineOptions = {
     strokeColor: "#ffff00",
     strokeOpacity: 0.75,
@@ -52,15 +52,15 @@ const MapComponent = ({
       };
     });
     return _locations;
-  };
+  }; 
 
   const locations: location[] = formatLocations(rawLocationArray);
   const smoothedLocations: location[] = formatLocations(smoothLocationArray);
+  const center = locations ? locations[0] : null;
 
   useEffect(() => {
     if (locations.length > 0) {
-      defaultCenter = locations[0];
-      setZoomLevel(15);
+      setZoomLevel(13);
     }
   }, [locations]);
 
@@ -75,7 +75,7 @@ const MapComponent = ({
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={zoomLevel}
-          center={defaultCenter}>
+          center={center ? center : defaultCenter}>
           {locations && <Polyline path={locations} options={RawOptions} />}
           {smoothedLocations && (
             <Polyline path={smoothedLocations} options={smoothOptions} />
